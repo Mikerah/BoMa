@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://maven.google.com" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'
@@ -20,4 +21,8 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    supportLibVersion = '26.1.0'  // variable that can be referenced to keep support libs consistent
 }

@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".BarcodeCaptureActivity">
+        </activity>
+        <activity android:name=".AddBookDetailsActivity">
+        </activity>
+        <activity android:name=".DetailActivity">
+        </activity>
+        <activity android:name=".BarcodeGraphic">
+        </activity>
+        <activity android:name=".BarcodeGraphicTracker">
+        </activity>
+        <activity android:name=".BarcodeTrackerFactory">
+        </activity>
     </application>
 
 </manifest>
