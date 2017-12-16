@@ -59,13 +59,15 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mBookRecyclerView.setLayoutManager(mLayoutManager);
 
-        // Add adapter
-        List<String> bookTitles = new ArrayList<>();
-        bookTitles.add("1984");
-        bookTitles.add("Animal Farm");
-        mBookAdapter = new BookAdapter(bookTitles);
-        mBookRecyclerView.setAdapter(mBookAdapter);
+        updateUI();
+    }
 
+    private void  updateUI(){
+        BookManager bookManager = BookManager.get(getApplicationContext());
+        List<Book> books = bookManager.getBooks();
+
+        mBookAdapter = new BookAdapter(books);
+        mBookRecyclerView.setAdapter(mBookAdapter);
     }
 
     /**
@@ -130,9 +132,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class BookAdapter extends RecyclerView.Adapter<BookHolder> {
-        private List<String> mBookList;
+        private List<Book> mBookList;
 
-        public BookAdapter(List<String> bookList){
+        public BookAdapter(List<Book> bookList){
             mBookList = bookList;
         }
 
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(BookHolder holder, int position){
-            holder.mTextView.setText(mBookList.get(position));
+            holder.mTextView.setText(mBookList.get(position).getTitle());
         }
 
         @Override
