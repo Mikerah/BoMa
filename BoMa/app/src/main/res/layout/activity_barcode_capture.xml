@@ -5,6 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/topLayout"
     tools:context="com.example.mikerah.boma.BarcodeCaptureActivity">
+
+    <com.example.mikerah.boma.CameraSourcePreview
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.mikerah.boma.GraphicOverlay
+            android:id="@+id/graphicOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.example.mikerah.boma.CameraSourcePreview>
 
 </android.support.constraint.ConstraintLayout>
