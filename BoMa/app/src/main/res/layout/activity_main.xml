@@ -24,4 +24,9 @@
         app:layout_anchor="@id/books_recycler_view"
         app:layout_anchorGravity="bottom|right|end"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/test_text_view"/>
+
 </android.support.design.widget.CoordinatorLayout>

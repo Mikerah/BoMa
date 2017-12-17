@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.example.mikerah.boma"
         minSdkVersion 14
@@ -24,15 +24,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.google.android.gms:play-services-vision:9.4.0+'
     compile 'com.google.apis:google-api-services-books:v1-rev93-1.23.0'
+    implementation 'com.google.android.gms:play-services-vision:11.6.0'
+    implementation 'com.google.android.gms:play-services:11.6.0'
     testCompile 'junit:junit:4.12'
 }
 
