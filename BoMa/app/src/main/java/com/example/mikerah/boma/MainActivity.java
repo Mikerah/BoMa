@@ -1,10 +1,15 @@
 package com.example.mikerah.boma;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,7 +31,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mBookRecyclerView;
     private RecyclerView.Adapter mBookAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;
+    private android.support.v7.widget.DividerItemDecoration
+            mDividerItemDecorator;
 
     private static final int RC_BARCODE_CAPTURE = 9001;
 
@@ -59,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mBookRecyclerView.setLayoutManager(mLayoutManager);
 
+        // Add divider
+        mDividerItemDecorator = new android.support.v7.widget
+                .DividerItemDecoration(getApplicationContext(),
+                mLayoutManager.getOrientation());
+        mBookRecyclerView.addItemDecoration(mDividerItemDecorator);
+
         updateUI();
     }
 
@@ -68,6 +81,67 @@ public class MainActivity extends AppCompatActivity {
 
         mBookAdapter = new BookAdapter(books);
         mBookRecyclerView.setAdapter(mBookAdapter);
+    }
+
+    private class BookHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView mBookTitle;
+        private TextView mBookAuthor;
+        private TextView mBookGenre;
+        private TextView mBookYear;
+
+        public BookHolder(View itemView) {
+            super(itemView);
+
+            mBookTitle = (TextView) itemView.findViewById(R.id.book_title);
+            mBookAuthor = (TextView) itemView.findViewById(R.id.book_author);
+            mBookGenre = (TextView) itemView.findViewById(R.id.book_genre);
+            mBookYear = (TextView) itemView.findViewById(R.id.book_year);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    }
+
+    public class BookAdapter extends RecyclerView.Adapter<BookHolder> {
+        private List<Book> mBookList;
+
+        public BookAdapter(List<Book> bookList){
+            mBookList = bookList;
+        }
+
+        @Override
+        public BookHolder onCreateViewHolder(ViewGroup parent,
+                                                         int viewType){
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            View view = inflater.inflate(R.layout.list_item_book, parent,
+                    false);
+            return new BookHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(BookHolder holder, int position){
+            Book book = mBookList.get(position);
+            holder.mBookTitle.setText(getString(R.string.book_title,book
+                    .getTitle
+                    ()));
+            holder.mBookAuthor.setText(getString(R.string.book_author,book
+                    .getAuthor
+                    ()));
+            holder.mBookGenre.setText(getString(R.string.book_genre,book
+                    .getGenre()));
+            holder.mBookYear.setText(getString(R.string.book_year,Integer
+                    .toString(book
+                    .getYearPublished
+                    ())));
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mBookList.size();
+        }
     }
 
     /**
@@ -112,48 +186,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    private class BookHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView mTextView;
-
-        public BookHolder(View itemView) {
-            super(itemView);
-
-            mTextView = (TextView) itemView.findViewById(R.id.book_title);
-        }
-
-        @Override
-        public void onClick(View v) {
-
-        }
-    }
-
-    public class BookAdapter extends RecyclerView.Adapter<BookHolder> {
-        private List<Book> mBookList;
-
-        public BookAdapter(List<Book> bookList){
-            mBookList = bookList;
-        }
-
-        @Override
-        public BookHolder onCreateViewHolder(ViewGroup parent,
-                                                         int viewType){
-            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            View view = inflater.inflate(R.layout.list_item_book, parent,
-                    false);
-            return new BookHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(BookHolder holder, int position){
-            holder.mTextView.setText(mBookList.get(position).getTitle());
-        }
-
-        @Override
-        public int getItemCount() {
-            return mBookList.size();
         }
     }
 }

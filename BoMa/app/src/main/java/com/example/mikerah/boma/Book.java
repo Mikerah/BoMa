@@ -11,7 +11,8 @@ public class Book {
     private UUID mId;
     private String mTitle;
     private String mAuthor;
-    private int mYearPublsihed;
+    private String mGenre;
+    private int mYearPublished;
     private int mYearAquired;
     private int mPersonalRating;
     private boolean mToKeep;
@@ -45,12 +46,12 @@ public class Book {
         this.mAuthor = mAuthor;
     }
 
-    public int getYearPublsihed() {
-        return mYearPublsihed;
+    public int getYearPublished() {
+        return mYearPublished;
     }
 
-    public void setYearPublsihed(int mYearPublsihed) {
-        this.mYearPublsihed = mYearPublsihed;
+    public void setYearPublished(int mYearPublsihed) {
+        this.mYearPublished = mYearPublsihed;
     }
 
     public int getYearAquired() {
@@ -75,6 +76,14 @@ public class Book {
 
     public void setToKeep(boolean mToKeep) {
         this.mToKeep = mToKeep;
+    }
+
+    public String getGenre() {
+        return mGenre;
+    }
+
+    public void setGenre(String mGenre) {
+        this.mGenre = mGenre;
     }
 
 }

@@ -4,5 +4,10 @@
     <string name="ok">OK</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="book_title">Title: %1$s</string>
+    <string name="book_author">Author: %1$s</string>
+    <string name="book_genre">Genre: %1$s</string>
+    <string name="book_year">Year: %1$s</string>
+
 
 </resources>

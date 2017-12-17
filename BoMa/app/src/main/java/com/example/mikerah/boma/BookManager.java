@@ -27,6 +27,9 @@ public class BookManager {
         for (int i=0; i<10;i++){
             Book book = new Book();
             book.setTitle("Book #" + i);
+            book.setAuthor("Me #" + i);
+            book.setGenre("Genre #" + i);
+            book.setYearPublished(i);
             mBooks.add(book);
         }
     }
