@@ -88,9 +88,12 @@ public class MainActivity extends AppCompatActivity {
         private TextView mBookAuthor;
         private TextView mBookGenre;
         private TextView mBookYear;
+        private Book mBook;
 
         public BookHolder(View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(this);
 
             mBookTitle = (TextView) itemView.findViewById(R.id.book_title);
             mBookAuthor = (TextView) itemView.findViewById(R.id.book_author);
@@ -98,9 +101,21 @@ public class MainActivity extends AppCompatActivity {
             mBookYear = (TextView) itemView.findViewById(R.id.book_year);
         }
 
+        public void bindBook(Book book){
+            mBook = book;
+            mBookTitle.setText(getString(R.string.book_title, book.getTitle()));
+            mBookAuthor.setText(getString(R.string.book_author, book.getAuthor()));
+            mBookGenre.setText(getString(R.string.book_genre, book.getGenre()));
+            mBookYear.setText(getString(R.string.book_year, book.getYearPublished()));
+
+        }
+
         @Override
         public void onClick(View v) {
-
+            Intent intent = new Intent(getApplicationContext(),
+                    DetailActivity.class);
+            intent.putExtra("BookID",mBook.getId());
+            startActivity(intent);
         }
     }
 
@@ -110,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         public BookAdapter(List<Book> bookList){
             mBookList = bookList;
         }
+
 
         @Override
         public BookHolder onCreateViewHolder(ViewGroup parent,
@@ -123,18 +139,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(BookHolder holder, int position){
             Book book = mBookList.get(position);
-            holder.mBookTitle.setText(getString(R.string.book_title,book
-                    .getTitle
-                    ()));
-            holder.mBookAuthor.setText(getString(R.string.book_author,book
-                    .getAuthor
-                    ()));
-            holder.mBookGenre.setText(getString(R.string.book_genre,book
-                    .getGenre()));
-            holder.mBookYear.setText(getString(R.string.book_year,Integer
-                    .toString(book
-                    .getYearPublished
-                    ())));
+            holder.bindBook(book);
 
         }
 
