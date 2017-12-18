@@ -1,6 +1,7 @@
 package com.example.mikerah.boma;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class BookManager {
 
     public Book getBook(UUID id) {
         for (Book book: mBooks){
-            if(book.getId() == id){
+            if(book.getId().equals(id)){
                 return book;
             }
         }
