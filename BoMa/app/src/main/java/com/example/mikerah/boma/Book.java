@@ -12,9 +12,9 @@ public class Book {
     private String mTitle;
     private String mAuthor;
     private String mGenre;
-    private int mYearPublished;
-    private int mYearAquired;
-    private int mPersonalRating;
+    private String mYearPublished;
+    private String mYearAcquired;
+    private String mPersonalRating;
     private boolean mToKeep;
 
     public Book(){
@@ -46,27 +46,27 @@ public class Book {
         this.mAuthor = mAuthor;
     }
 
-    public int getYearPublished() {
+    public String getYearPublished() {
         return mYearPublished;
     }
 
-    public void setYearPublished(int mYearPublsihed) {
+    public void setYearPublished(String mYearPublsihed) {
         this.mYearPublished = mYearPublsihed;
     }
 
-    public int getYearAquired() {
-        return mYearAquired;
+    public String getYearAcquired() {
+        return mYearAcquired;
     }
 
-    public void setYearAquired(int mYearAquired) {
-        this.mYearAquired = mYearAquired;
+    public void setYearAcquired(String mYearAcquired) {
+        this.mYearAcquired = mYearAcquired;
     }
 
-    public int getPersonalRating() {
+    public String getPersonalRating() {
         return mPersonalRating;
     }
 
-    public void setPersonalRating(int mPersonalRating) {
+    public void setPersonalRating(String mPersonalRating) {
         this.mPersonalRating = mPersonalRating;
     }
 

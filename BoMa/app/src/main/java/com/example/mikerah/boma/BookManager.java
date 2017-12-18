@@ -30,7 +30,7 @@ public class BookManager {
             book.setTitle("Book #" + i);
             book.setAuthor("Me #" + i);
             book.setGenre("Genre #" + i);
-            book.setYearPublished(i);
+            book.setYearPublished(Integer.toString(i));
             mBooks.add(book);
         }
     }

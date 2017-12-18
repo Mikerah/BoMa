@@ -16,8 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -75,12 +77,24 @@ public class MainActivity extends AppCompatActivity {
         updateUI();
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        updateUI();
+    }
+
     private void  updateUI(){
         BookManager bookManager = BookManager.get(getApplicationContext());
         List<Book> books = bookManager.getBooks();
 
-        mBookAdapter = new BookAdapter(books);
-        mBookRecyclerView.setAdapter(mBookAdapter);
+
+        if(mBookAdapter == null){
+            mBookAdapter = new BookAdapter(books);
+            mBookRecyclerView.setAdapter(mBookAdapter);
+        } else {
+            mBookAdapter.notifyDataSetChanged();
+        }
+
     }
 
     private class BookHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -88,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         private TextView mBookAuthor;
         private TextView mBookGenre;
         private TextView mBookYear;
+
         private Book mBook;
 
         public BookHolder(View itemView) {
@@ -107,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             mBookAuthor.setText(getString(R.string.book_author, book.getAuthor()));
             mBookGenre.setText(getString(R.string.book_genre, book.getGenre()));
             mBookYear.setText(getString(R.string.book_year, book.getYearPublished()));
+
 
         }
 

@@ -63,7 +63,7 @@
         style="?android:listSeparatorTextViewStyle"/>
 
     <EditText
-        android:id="@+id/detail_year_aquired"
+        android:id="@+id/detail_year_acquired"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -89,6 +89,7 @@
         style="?android:listSeparatorTextViewStyle"/>
 
     <ToggleButton
+        android:id="@+id/detail_to_keep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textOff="No"

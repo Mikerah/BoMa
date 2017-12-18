@@ -10,7 +10,7 @@
     <string name="book_year">Year: %1$s</string>
     <string name="year_aquired_hint">When Did you aquire this book?</string>
     <string name="rating_hint">What is your personal rating of this
-        book out of 5?</string>
+        book?</string>
 
 
 </resources>
