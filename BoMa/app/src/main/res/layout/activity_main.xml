@@ -16,8 +16,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_new_book_fab"
-        android:src="@android:drawable/ic_dialog_email"
         app:fabSize="normal"
+        android:src="@drawable/ic_add_circle_outline_black_24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
