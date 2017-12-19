@@ -18,8 +18,12 @@ public class Book {
     private boolean mToKeep;
 
     public Book(){
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
 
+    }
+
+    public Book(UUID id) {
+        mId = id;
     }
 
     public UUID getId() {

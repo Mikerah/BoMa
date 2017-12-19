@@ -100,4 +100,11 @@ public class DetailActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        BookManager.get(getApplicationContext()).updateBook(mBook);
+    }
 }
