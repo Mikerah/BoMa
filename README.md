@@ -1,5 +1,7 @@
 # BoMa
 
+![Alt text](demo-app.gif?raw=true)
+
 ## Overview
 BoMa is a semi-functional book manager that I need to manager my physical books. My university host book sales every year and I end up buying to many. This app to manage these books and help me decide which ones to keep.
 
