@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.PagerAdapter;
@@ -26,6 +27,7 @@ import android.widget.ToggleButton;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
+import com.google.api.services.books.Books;
 
 import org.w3c.dom.Text;
 
@@ -169,6 +171,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private class GetBookTask extends AsyncTask<Void, Void, Book> {
+        private Barcode mBarcode;
+
+        public GetBookTask(Barcode barcode){
+            mBarcode = barcode;
+        }
+
+        @Override
+        protected Book doInBackground(Void... voids) {
+            Books books = GoogleBooksHelper.GetBooksObj(getApplicationContext());
+            Book book = GoogleBooksHelper.getBook(books, mBarcode);
+            return book;
+        }
+
+        @Override
+        protected void onPostExecute(Book book){
+            BookManager.get(getApplicationContext()).addBook(book);
+            updateUI();
+        }
+    }
+
     /**
      * Called when an activity you launched exits, giving you the requestCode
      * you started it with, the resultCode it returned, and any additional
@@ -190,14 +213,14 @@ public class MainActivity extends AppCompatActivity {
      * @see #startActivityForResult
      * @see #createPendingResult
      * @see #setResult(int)
-     */
+     **/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RC_BARCODE_CAPTURE) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
-                    String barcode_value = barcode.displayValue;
+
 
                 } else {
                     Toast.makeText(getApplicationContext(), " Didn't Scanned " +
@@ -213,4 +236,5 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 }

@@ -25,14 +25,10 @@ public class BookManager {
 
     private BookManager(Context context){
         mBooks = new ArrayList<>();
-        for (int i=0; i<10;i++){
-            Book book = new Book();
-            book.setTitle("Book #" + i);
-            book.setAuthor("Me #" + i);
-            book.setGenre("Genre #" + i);
-            book.setYearPublished(Integer.toString(i));
-            mBooks.add(book);
-        }
+    }
+
+    public void addBook(Book book){
+        mBooks.add(book);
     }
 
     public Book getBook(UUID id) {
