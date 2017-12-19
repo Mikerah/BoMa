@@ -27,8 +27,6 @@
         </activity>
         <activity android:name=".BarcodeCaptureActivity">
         </activity>
-        <activity android:name=".AddBookDetailsActivity">
-        </activity>
         <activity android:name=".DetailActivity">
         </activity>
     </application>
