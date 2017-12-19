@@ -1,6 +1,7 @@
 package com.example.mikerah.boma;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -51,9 +52,10 @@ public class GoogleBooksHelper {
             Books.Volumes.List volumesList = booksObj.volumes().list(barcode.displayValue);
             Volumes volumes = volumesList.execute();
             Volume volume = volumes.getItems().get(0);
+            Log.i("GoogleBooksHelper", "Volume is " + volume);
             Volume.VolumeInfo volumeInfo = volume.getVolumeInfo();
             String book_authors = Joiner.on(",").join(volumeInfo.getAuthors());
-            String book_genre = volumeInfo.getMainCategory();
+            String book_genre = Joiner.on(" ").join(volumeInfo.getCategories());
             String book_title = volumeInfo.getTitle();
             String book_year_published = volumeInfo.getPublishedDate();
             book.setGenre(book_genre);

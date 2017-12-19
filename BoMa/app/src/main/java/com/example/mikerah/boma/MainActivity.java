@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
-
+                    new GetBookTask(barcode).execute();
 
                 } else {
                     Toast.makeText(getApplicationContext(), " Didn't Scanned " +
