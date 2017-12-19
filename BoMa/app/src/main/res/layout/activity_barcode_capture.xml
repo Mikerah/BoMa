@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/topLayout"
-    tools:context="com.example.mikerah.boma.BarcodeCaptureActivity">
+    tools:context="com.example.mikerah.boma.BarcodeTools.BarcodeCaptureActivity">
 
-    <com.example.mikerah.boma.CameraSourcePreview
+    <com.example.mikerah.boma.BarcodeTools.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,6 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.example.mikerah.boma.CameraSourcePreview>
+    </com.example.mikerah.boma.BarcodeTools.CameraSourcePreview>
 
 </android.support.constraint.ConstraintLayout>

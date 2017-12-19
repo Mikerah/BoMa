@@ -1,4 +1,4 @@
-package com.example.mikerah.boma;
+package com.example.mikerah.boma.BarcodeTools;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -24,9 +24,8 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.mikerah.boma.CameraSource;
-import com.example.mikerah.boma.CameraSourcePreview;
-
+import com.example.mikerah.boma.GraphicOverlay;
+import com.example.mikerah.boma.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;

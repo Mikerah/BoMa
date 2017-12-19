@@ -1,4 +1,4 @@
-package com.example.mikerah.boma;
+package com.example.mikerah.boma.BarcodeTools;
 
 /**
  * Created by Mikerah on 12/15/2017.

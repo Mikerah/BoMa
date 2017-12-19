@@ -1,4 +1,4 @@
-package com.example.mikerah.boma;
+package com.example.mikerah.boma.BarcodeTools;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

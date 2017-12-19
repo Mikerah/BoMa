@@ -1,4 +1,4 @@
-package com.example.mikerah.boma;
+package com.example.mikerah.boma.BarcodeTools;
 
 /**
  * Created by Mikerah on 12/15/2017.
@@ -14,6 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 
+import com.example.mikerah.boma.GraphicOverlay;
 import com.google.android.gms.common.images.Size;
 
 import java.io.IOException;

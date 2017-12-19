@@ -1,4 +1,4 @@
-package com.example.mikerah.boma;
+package com.example.mikerah.boma.BarcodeTools;
 
 import android.content.Context;
 import android.support.annotation.UiThread;
