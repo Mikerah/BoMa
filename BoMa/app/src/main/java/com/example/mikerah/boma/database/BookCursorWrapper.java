@@ -47,7 +47,7 @@ public class BookCursorWrapper extends CursorWrapper{
         book.setYearAcquired(yearAcquired);
         book.setPersonalRating(personalRating);
         book.setToKeep(toKeep != 0);
-        
+
         return book;
     }
 }

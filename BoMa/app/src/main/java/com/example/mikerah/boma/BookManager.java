@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.mikerah.boma.database.BookBaseHelper;
+import com.example.mikerah.boma.database.BookCursorWrapper;
 import com.example.mikerah.boma.database.BookDBSchema;
 
 import java.util.ArrayList;
@@ -41,8 +42,18 @@ public class BookManager {
     }
 
     public Book getBook(UUID id) {
+        BookCursorWrapper cursor = queryBooks(BookDBSchema.BookTable.Cols
+                .UUID + " = ?", new String[]{ id.toString() });
 
-        return null;
+        try {
+            if (cursor.getCount() == 0){
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getBook();
+        } finally {
+            cursor.close();
+        }
     }
 
     public void updateBook(Book book){
@@ -68,7 +79,7 @@ public class BookManager {
         return values;
     }
 
-    private Cursor queryBooks(String whereClause, String[] whereArgs){
+    private BookCursorWrapper queryBooks(String whereClause, String[] whereArgs){
         Cursor cursor = mDatabase.query(
                 BookDBSchema.BookTable.NAME,
                 null,
@@ -79,14 +90,25 @@ public class BookManager {
                 null
         );
 
-        return cursor;
+        return new BookCursorWrapper(cursor);
     }
 
     public List<Book> getBooks() {
-        return new ArrayList<>();
+        List<Book> books = new ArrayList<>();
+
+        BookCursorWrapper cursor = queryBooks(null,null);
+
+        try {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()){
+                books.add(cursor.getBook());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return books;
     }
 
-    public void setBooks(List<Book> mBooks) {
-
-    }
 }

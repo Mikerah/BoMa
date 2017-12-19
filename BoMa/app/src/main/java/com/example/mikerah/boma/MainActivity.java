@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mBookRecyclerView;
-    private RecyclerView.Adapter mBookAdapter;
+    private BookAdapter mBookAdapter;
     private LinearLayoutManager mLayoutManager;
     private android.support.v7.widget.DividerItemDecoration
             mDividerItemDecorator;
@@ -78,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
         BookManager bookManager = BookManager.get(getApplicationContext());
         List<Book> books = bookManager.getBooks();
 
-
         if(mBookAdapter == null){
             mBookAdapter = new BookAdapter(books);
             mBookRecyclerView.setAdapter(mBookAdapter);
         } else {
+            mBookAdapter.setBookList(books);
             mBookAdapter.notifyDataSetChanged();
         }
 
@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
             mBookGenre.setText(getString(R.string.book_genre, book.getGenre()));
             mBookYear.setText(getString(R.string.book_year, book.getYearPublished()));
 
-
         }
 
         @Override
@@ -133,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
         public BookAdapter(List<Book> bookList){
             mBookList = bookList;
         }
-
 
         @Override
         public BookHolder onCreateViewHolder(ViewGroup parent,
@@ -155,6 +153,11 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return mBookList.size();
         }
+
+        public void setBookList(List<Book> books) {
+            mBookList = books;
+        }
+
     }
 
     private class GetBookTask extends AsyncTask<Void, Void, Book> {
